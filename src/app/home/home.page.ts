@@ -9,7 +9,9 @@ import { AppComponent } from '../app.component';
 export class HomePage {
 
   public pelicula:string;
-  movies = [{}];
+  movies = [];
+
+  movie = [];
 
   constructor() {  }
 
@@ -19,5 +21,17 @@ export class HomePage {
 
   FindSearch(film) {
     return fetch('http://www.omdbapi.com/?s=' + film + '&apikey=9e527135').then(response => response.json());
+  }
+
+  FilmToSearchbyID(id: string) {
+    this.FindSearchbyID(id).then(res => this.movie = res);
+  }
+
+  FindSearchbyID(id) {
+    return fetch('http://www.omdbapi.com/?i=' + id + '&apikey=9e527135').then(response => response.json());
+  }
+
+  OpenFilm() {
+
   }
 }
