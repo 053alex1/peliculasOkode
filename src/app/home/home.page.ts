@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,16 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  public pelicula:string;
+  movies = [{}];
 
+  constructor() {  }
+
+  FilmToSearch() {
+    this.FindSearch(this.pelicula).then(res => this.movies = res.Search);
+  }
+
+  FindSearch(film) {
+    return fetch('http://www.omdbapi.com/?s=' + film + '&apikey=9e527135').then(response => response.json());
+  }
 }
