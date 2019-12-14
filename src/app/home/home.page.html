@@ -8,10 +8,14 @@
     <ion-label slot = "start">{{movie.Title}}</ion-label>
     <ion-label slot = "end">{{movie.Year}}</ion-label>
   </ion-item>
-  <ion-item>
-    <ion-label> Pelicula: {{movie.Title}}</ion-label>
-    <ion-label> Año: {{movie.Year}}</ion-label>
-    <ion-label> Idioma: {{movie.Language}}</ion-label>
-    <ion-label> Descripcion: {{movie.Plot}}</ion-label>
+  <ion-item *ngIf = "movie != []">
+    <img src = {{movie.Poster}}>
+    <ion-content>
+      <ion-label> Pelicula: {{movie.Title}}<br/></ion-label>
+      <ion-label> Año: {{movie.Year}}<br/></ion-label>
+      <ion-label> Idioma: {{movie.Language}}<br/></ion-label>
+      Descripcion:<ion-note> {{movie.Plot}}</ion-note>
+    </ion-content>
   </ion-item>
+  
 </ion-content>
